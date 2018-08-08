@@ -1,0 +1,50 @@
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('../../assets/world.jpeg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1 class="globalhead">World Mapper</h1>
+          <h4 class="subheading">Explore All About Countries</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+
+  <!-- Page Heading -->
+  <h1 class="my-4">World Data
+    <small>All Regions</small>
+  </h1>
+  <br>
+
+  <div class="row">
+    <div *ngFor="let region of regions" class="col-lg-4 col-sm-6 portfolio-item">
+      <div href="#" class="card h-100">
+        <a>
+          <img class="card-img-top" src="{{region.image}}" alt="">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a>{{region.regionName}}</a>
+          </h4>
+          <p class="card-text"></p>
+          <p>{{region.description}}</p>
+          <a [routerLink] ="['/allcountries', region.regionName]" class="btn-lg btn-info" style="float:right">Details</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <br><br>
+</div>
+<br><br>
+
+
+

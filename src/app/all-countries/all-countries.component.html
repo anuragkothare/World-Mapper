@@ -1,0 +1,32 @@
+<br><br><br>
+<div class="jumbotron-fluid">
+    <h1>All Countries</h1>
+</div>
+<br><br>
+
+<div class="container-fluid back">
+  <div class="row" style="padding-left: 5%; padding-right: 1%;">
+    <div class="country col-md-4" *ngFor="let country of allCountries">
+
+      <!--Countries Card Begins-->
+
+        <div class="card countryCard" style="width: 18rem;">
+            <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height:45%; width:60%; border: 1px solid black">
+            <div class="card-body">
+              <h5 class="card-title text-truncate"> <strong>{{country.name}}</strong></h5>
+              <p class="card-text text-truncate">Language:
+                <a [routerLink] = "['/allcountries/language',language.iso639_1]" *ngFor='let language of country.languages; let first = first; let last = last;'>{{language.name}}{{last ? '' : ', '}}</a>
+              </p>
+              <p class="card-text text-truncate">Currency:
+                <a [routerLink] = "['/allcountries/currency',currency.code]" *ngFor='let currency of country.currencies; let first = first; let last = last;'>{{currency.name}}{{last ? '' : ', '}}</a>
+              </p>
+              <p class="card-text">Capital: {{country.capital}}</p>
+              <p class="card-text">Population: {{country.population}}</p>
+              <a [routerLink] = "['/country-view',country.name]" class="btn btn-success" style="margin-left:45%">Country Details</a>
+            </div>
+          </div>
+      <!--Countries Card Ends-->
+    </div>
+  </div>
+  <br><br><br>
+</div>

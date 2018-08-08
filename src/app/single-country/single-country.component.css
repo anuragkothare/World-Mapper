@@ -1,0 +1,19 @@
+.card-text {
+  font-family: 'Abel', sans-serif;
+  font-size: 22px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 45px;
+  font-family: 'Abel', sans-serif;
+}
+
+.countryCard{
+  background-color: #434343;
+  opacity: 1;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  box-shadow: 2px 0px 20px 2px black;
+  color:white;
+}

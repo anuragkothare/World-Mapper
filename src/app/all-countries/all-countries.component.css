@@ -1,0 +1,29 @@
+.country {
+  margin-top: 16px;
+}
+
+.jumbotron-fluid {
+  font-family: 'Sintony', sans-serif;
+  text-align: center;
+  font-size: 100px;
+  padding-top: 3%;
+}
+
+.card-text {
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+}
+
+.card-title {
+  font-size: 26px;
+  font-family: 'Abel', sans-serif;
+}
+
+.countryCard{
+  background-color:#434343;
+  opacity: 1;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  box-shadow: 2px 0px 20px 2px black;
+  color:white;
+}

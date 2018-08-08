@@ -1,0 +1,78 @@
+.display-3 {
+  font-family: 'Sintony', sans-serif;
+}
+
+.globalhead {
+  font-size: 5rem
+}
+
+.subheading {
+  font-size: 1.5rem;
+}
+.masthead {
+  color: whitesmoke;
+  font-family: 'Domine', serif;
+  font-weight: bolder;
+  text-align: center;
+}
+
+
+img::selection {
+  color: #fff;
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+
+header.masthead {
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: #868e96;
+  background-attachment: scroll;
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+.portfolio-item{
+  margin-bottom: 55px;
+}
+
+.card {
+
+    margin-bottom: 0px;
+    background-color: #212529;
+    margin: 3%;
+    padding:3%;
+    border-radius: 3px;
+    border: 1px solid #283c86;
+    box-shadow: 2px 0px 20px 2px black;
+    transition: all .2s ease-in-out;
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+    color: whitesmoke;
+}
+
+.card:hover{
+  background-color: #212529;
+  box-shadow: 2px 0px 20px 2px whitesmoke;
+  transform: scale(1.09);
+}
+
+
+
