@@ -1,12 +1,47 @@
 <br><br><br>
 <div class="jumbotron-fluid">
+    <div class="pull-left">
+        <a  href="/regions"><img style="width: 4%; float: left; padding-left:20px;" src="../../assets/left-arrow.svg"  alt=""></a>
+    </div>
     <h1>All Countries</h1>
+</div>
+<br><br>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+        <label for="Regions"> <strong style="font-size: 25px;">Filter</strong></label>
+        <ng-multiselect-dropdown
+        [placeholder]="'Choose Filter Type'"
+        [data]="filterTypeList"
+        [(ngModel)]="filterTypeSelectedItems"
+        [settings]="filterTypeDropdownSettings"
+        (onSelect)="onFilterTypeItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="col-md-6">
+        <label for=""> <strong style="font-size: 25px;">Region</strong></label>
+        <ng-multiselect-dropdown
+        [placeholder]="'custom placeholder'"
+        [data]="filterValueList"
+        [(ngModel)]="filterValueSelectedItems"
+        [settings]="filterValueDropdownSettings"
+        (onSelect)="onFilterValueItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+  </div>
 </div>
 <br><br>
 
 <div class="container-fluid back">
   <div class="row" style="padding-left: 5%; padding-right: 1%;">
-    <div class="country col-md-4" *ngFor="let country of allCountries">
+    <div class="country col-md-4" *ngFor="let country of allCountries$ | async">
 
       <!--Countries Card Begins-->
 
@@ -15,10 +50,10 @@
             <div class="card-body">
               <h5 class="card-title text-truncate"> <strong>{{country.name}}</strong></h5>
               <p class="card-text text-truncate">Language:
-                <a [routerLink] = "['/allcountries/language',language.iso639_1]" *ngFor='let language of country.languages; let first = first; let last = last;'>{{language.name}}{{last ? '' : ', '}}</a>
+                <a [routerLink] = "['/allcountries/language',language.iso639_1]" *ngFor='let language of country.languages; let first = first; let last = last;'>{{language.name}} {{language.iso639_1}}{{last ? '' : ', '}}</a>
               </p>
               <p class="card-text text-truncate">Currency:
-                <a [routerLink] = "['/allcountries/currency',currency.code]" *ngFor='let currency of country.currencies; let first = first; let last = last;'>{{currency.name}}{{last ? '' : ', '}}</a>
+                <a [routerLink] = "['/allcountries/currency',currency.code]" *ngFor='let currency of country.currencies; let first = first; let last = last;'>{{currency.code}} {{currency.name }}{{last ? '' : ', '}}</a>
               </p>
               <p class="card-text">Capital: {{country.capital}}</p>
               <p class="card-text">Population: {{country.population}}</p>

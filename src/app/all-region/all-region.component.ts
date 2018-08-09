@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AllRegionComponent implements OnInit {
 
-  public regions: any = [
+  public static regions: any = [
     {
       regionName: 'Asia',
       image: '../../assets/asia1.jpg',
@@ -42,6 +42,8 @@ export class AllRegionComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  get staticRegions() {
+    return AllRegionComponent.regions;
+  }
 
 }

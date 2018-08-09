@@ -26,7 +26,7 @@ export class SingleCountryComponent implements OnInit {
       data => {
         console.log(data);
         this.currentCountry = data;
-       // console.log(this.currentCountry.name); // resulting into undefined
+
       },
       error => {
         console.log("some error occured");
