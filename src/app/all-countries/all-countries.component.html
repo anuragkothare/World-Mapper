@@ -18,7 +18,7 @@
         [(ngModel)]="filterTypeSelectedItems"
         [settings]="filterTypeDropdownSettings"
         (onSelect)="onFilterTypeItemSelect($event)"
-        (onSelectAll)="onSelectAll($event)"
+
       >
       </ng-multiselect-dropdown>
     </div>
@@ -31,7 +31,7 @@
         [(ngModel)]="filterValueSelectedItems"
         [settings]="filterValueDropdownSettings"
         (onSelect)="onFilterValueItemSelect($event)"
-        (onSelectAll)="onSelectAll($event)"
+
       >
       </ng-multiselect-dropdown>
     </div>
@@ -55,6 +55,7 @@
               <p class="card-text text-truncate">Currency:
                 <a [routerLink] = "['/allcountries/currency',currency.code]" *ngFor='let currency of country.currencies; let first = first; let last = last;'>{{currency.code}} {{currency.name }}{{last ? '' : ', '}}</a>
               </p>
+              <p class="card-text">Region: {{country.region}}</p>
               <p class="card-text">Capital: {{country.capital}}</p>
               <p class="card-text">Population: {{country.population}}</p>
               <a [routerLink] = "['/country-view',country.name]" class="btn btn-success" style="margin-left:45%">Country Details</a>
