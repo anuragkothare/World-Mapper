@@ -40,4 +40,10 @@ export class CountryService {
     let params = new HttpParams().set('fields', 'currencies');
     return this._http.get(this.baseUrl + '/all', {params:params});
   }
+
+  public getAllLanguages(): Observable<any>{
+    //https://restcountries.eu/rest/v2/all?fields=languages
+    let params = new HttpParams().set('fields', 'languages');
+    return this._http.get(this.baseUrl + '/all', {params:params});
+  }
 }

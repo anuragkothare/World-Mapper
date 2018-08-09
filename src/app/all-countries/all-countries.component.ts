@@ -26,12 +26,14 @@ export class AllCountriesComponent implements OnInit {
 
   public allCountries$ : Observable<Country[]>;
   public currencyMap: Map<String,any> = new Map();
+  public languageMap: Map<String,any> = new Map();
 
   constructor(private _route: ActivatedRoute, private router: Router, public _http: CountryService) { }
 
   ngOnInit() {
 
       this.getAllCurrencies()
+      this.getAllLanguages()
       // Dropdown Menu
       this.filterTypeList = [
         { item_id: 1, item_text: 'Language' },
@@ -90,7 +92,6 @@ export class AllCountriesComponent implements OnInit {
         }
     })
 
-
   }
 
   onFilterTypeItemSelect (item:any) {
@@ -103,17 +104,24 @@ export class AllCountriesComponent implements OnInit {
       });
     }
     else if(item.item_text === "Currency"){
-      console.log("I m here " + this.currencyMap.size)
+      console.log("I m here curr " + this.currencyMap.size)
       this.filterValueList=[]
       Array.from(this.currencyMap.keys()).forEach((currency,i)=>{
         this.filterValueList.push({ item_id: i+1, item_text: currency})
       })
     }
+    else if(item.item_text === "Language"){
+      console.log("I m here " + this.languageMap.size)
+      this.filterValueList=[]
+      Array.from(this.languageMap.keys()).forEach((language, i)=>{
+        this.filterValueList.push( { item_id: i+1, item_text: language } )
+      })
+    }
   }
 
   onFilterValueItemSelect(item:any) {
-    // console.log(item)
-    // console.log(this.filterTypeSelectedItems)
+    console.log(item)
+    console.log(this.filterTypeSelectedItems)
     if(this.filterTypeSelectedItems && Array.isArray(this.filterTypeSelectedItems) && this.filterTypeSelectedItems.length>0){
       if(this.filterTypeSelectedItems[0].item_text === "Region"){
         let region = item.item_text;
@@ -124,9 +132,14 @@ export class AllCountriesComponent implements OnInit {
         let currencyCode = this.currencyMap.get(currencyName).code;
         this.allCountries$ = this._http.getAllCountriesByCurrency(currencyCode)
       }
+      else if(this.filterTypeSelectedItems[0].item_text === "Language"){
+        let languageName = item.item_text;
+        let languageCode = this.languageMap.get(languageName).iso639_2;
+        this.allCountries$ = this._http.getAllCountriesByLanguage(languageCode)
+      }
     }
-
   }
+
   getAllCurrencies(){
     this._http.getAllCurrencies().subscribe((data: Array<any>)=>{
       for(var obj of data){
@@ -137,5 +150,17 @@ export class AllCountriesComponent implements OnInit {
         }
       }
     });
+  }
+
+  getAllLanguages(){
+    this._http.getAllLanguages().subscribe((data: Array<any>)=>{
+      for(var obj of data) {
+        for(var language of obj.languages) {
+          if(!this.languageMap.has(language.name)) {
+            this.languageMap.set(language.name, language)
+          }
+        }
+      }
+  })
   }
 }
